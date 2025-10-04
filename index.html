@@ -1,0 +1,766 @@
+<! DOCTYPE html>
+
+<html lang="ja">
+
+<head>
+
+<meta charset="UTF-8">
+<title>How to make Web</title>
+<link rel="stylesheet" href="How_to_make_Web.css">
+
+</head>
+
+<body>
+
+<P>
+どうもこんにちは。このサイトでは、簡単なWebページの作り方について説明したいと思います。
+<br>
+HTMLには「タグ」というものが存在し、「タグを使って文章や画像を部品ごとに囲んでいく」というのが基本ルールです。
+<br>
+以下、用途別にHTMLのタグを紹介していきます。
+
+</p>
+
+<h1>HTMLファイルの基本構造</h1>
+
+<h3>&lt;html&gt;</h3>
+
+<p>このタグで囲った範囲にHTMLを記述します。</p>
+
+<table>
+<tr><td>属性</td><td>値</td><td>指定内容</td></tr>
+<tr><td>lang</td><td>ja</td><td>言語に「日本語」を指定</td></tr>
+</table>
+
+<p>
+「属性」、「値」について説明します。
+<br>
+冒頭で、「タグを使って部品を囲む」と説明しましたが、タグには部品を囲むだけでなく、様々な「属性」を付与することができます。
+<br>
+&lt;html&gt;タグはコード全体を囲むわけですが、以下のようにlang属性を付与し、値にjaを指定することで、使用する言語に「日本語」を指定することができます。
+</p>
+
+<br>
+<p>
+&lt;html lang="ja"&gt;<br>
+ページ内容<br>
+&lt;/html&gt;
+</p>
+<br>
+
+<p>
+&lt;/html&gt;についても説明します。<br>
+タグは、部品を囲むために使用すると説明しましたが、囲い始めと囲い終わりに全く同じ記述をするわけではありません。<br>
+&lt;html&gt;タグなどは基本的に一つのページに一つしか記述しませんが、後程説明する&lt;p&gt;タグなどは一つのページに何度も繰り返し記述します。<br>
+その場合、始めと終わりに同じ記述をしてしまうとどこが囲い始めでどこが囲い終わりかわからなくなってしまいます。<br>
+そこで、囲い終わりを示すタグには、タグ名の前に/を入れて、区別することにします。
+</p>
+
+<p>以降説明するタグは、全て&lt;html&gt;タグ内に記述します。</p>
+
+<h3>&lt;head&gt;</h3>
+このタグで囲った範囲にページ全体にかかわる設定を記述します。
+
+<h3>&lt;body&gt;</h3>
+このタグで囲った範囲にホームページに表示する内容を記述します。
+
+<h3>&lt;meta&gt;</h3>
+文字コードなどのページ全体に関わる設定を行います。<br>
+このタグは&lt;head&gt;～&lt;/head&gt;の中に記述しなければいけません。
+
+<table>
+<tr><td>属性</td><td>値</td><td>指定内容</td></tr>
+<tr><td rowspan="3">charset</td><td>Shift_JIS</td><td>文字コードに「Shift_JIS」を指定</td></tr>
+<tr><td>EUC-JP</td><td>文字コードに「日本語EUC」を指定</td></tr>
+<tr><td>UTF-8</td><td>文字コードに「UTF-8」を指定</td></tr>
+</table>
+
+<h3>&lt;tytle&gt;</h3>
+ページタイトルを指定します。このタグは&lt;head&gt;～&lt;/head&gt;の中に記述しなければいけません。「文字コードを指定するmetaタグ」の直後に記述するのが基本です。
+
+<h3>&lt;link&gt;</h3>
+CSSファイルなどの読み込みを行います。このタグは&lt;head&gt;～&lt;/head&gt;の中に記述しなければいけません。
+
+<table>
+<tr><td>属性</td><td>値</td><td>指定内容</td></tr>
+<tr><td rowspan="2">rel</td><td>(リンクタイプ)</td><td>読み込むファイルの種類の指定</td></tr>
+<tr><td>stylesheet</td><td>読み込むファイルに「CSSファイル」を指定</td></tr>
+<tr><td>href</td><td>(ファイル名)</td><td>読み込むファイル名（パスを含む）の指定</td></tr>
+</table>
+
+<h3>&lt;style&gt;</h3>
+このタグで囲った範囲にページ内で使用するCSSを記述します。このタグは&lt;head&gt;～&lt;/head&gt;の中に記述するのが基本です。
+
+<p>これらを使って、HTMLの基本的な記述の例を示してみます。</p>
+
+<p class = tag1>
+&lt;!DOCTYPE html&gt;
+
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset="UTF-8"&gt;
+		&lt;title&gt;ページのタイトル&lt;/title&gt;
+		&lt;link rel="stylesheet" href="CSSファイル名"&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		ページ内容
+	&lt;/body&gt;
+&lt;/html&gt;
+</p>
+<br>
+
+<p>以降に説明するタグは、全て上記の例の「ページ内容」の部分に記述します。</p>
+
+<h1>文字関連</h1>
+
+<h1 style="display: inline;">&lt;h1&gt;</h1>、<h2 style="display: inline;">&lt;h2&gt;</h2>、<h3 style="display: inline;">&lt;h3&gt;</h3>、<h4 style="display: inline;">&lt;h4&gt;</h4>、<h5 style="display: inline;">&lt;h5&gt;</h5>、<h6 style="display: inline;">&lt;h6&gt;</h6>
+<p>
+見出しを指定します。見出しのレベルはh1が最も高く、数字が大きくなるほどレベルの低い見出しになります。
+</p>
+
+<h3>&lt;p&gt;</h3>
+<p>
+段落を指定します。ホームページに表示する文章は、このタグの中に記述するのが一般的です。
+</p>
+
+<h3>&lt;br&gt;</h3>
+<p>
+このタグを記述した位置で文章を改行します。
+</p>
+
+<h3>&lt;hr&gt;</h3>
+<p>
+このタグを記述した位置にヘアライン（区切り線）を表示します。
+</p>
+
+<p>
+&lt;例&gt;<br>
+</p>
+
+<hr>
+
+<h3>&lt;b&gt;</h3>
+<p>このタグで囲った範囲の文字を<b>太字</b>で表示します。</p>
+
+<h3>&lt;i&gt;</h3>
+<p>このタグで囲った範囲の文字を<i>斜体</i>で表示します。</p>
+
+<h3>&lt;strong&gt;</h3>
+<p>
+このタグで囲った範囲の文字を<strong>強調して</strong>表示します（太字で表示します）。
+</p>
+
+<h3>&lt;mark&gt;</h3>
+このタグで囲った範囲の文字を<mark>マーカー強調</mark>で表示します。
+
+<br>
+
+<h3>&lt;del&gt;</h3>
+このタグで囲った範囲の文字を<del>取り消し線</del>で表示します。
+
+<br>
+
+<h3>&lt;pre&gt;</h3>
+このタグで囲った範囲の文字を<pre>等幅フォント</pre>で表示します。
+
+<br>
+
+<h3>&lt;sup&gt;</h3>
+このタグで囲った範囲の文字を<sup>上付き文字</sup>で表示します。
+
+<br>
+
+<h3>&lt;sub&gt;</h3>
+このタグで囲った範囲の文字を<sub>下付き文字</sub>で表示します。
+
+<br><br><br>
+
+<h1>画像</h1>
+
+<h3>&lt;img&gt;</h3>
+このタグを記述した位置に画像を掲載します。
+
+<table>
+<tr><td>属性</td><td>値</td><td>指定内容</td></tr>
+<tr><td>src</td><td>(ファイル名)</td><td>掲載する画像のファイル名(パスを含む)の指定</td></tr>
+<tr><td>alt</td><td>(文字)</td><td>大体テキストの指定</td></tr>
+<tr><td>width</td><td>(数値)</td><td>画像の表示サイズ(横幅)の指定</td></tr>
+<tr><td>height</td><td>(数値)</td><td>画像の表示サイズ(高さ)の指定</td></tr>
+</table>
+
+<h1>リンク</h1>
+
+<h3>&lt;a&gt;</h3>
+
+このタグで囲った範囲の文字や画像をリンクとして機能させます。
+
+<table>
+<tr><td>属性</td><td>値</td><td>指定内容</td></tr>
+<tr><td rowspan="3">href</td><td>(ファイル名)</td><td>リンク先のHTMLファイル名(パスを含む)の指定</td></tr>
+<tr><td>(URL)</td><td>リンク先のURLの指定</td></tr>
+<tr><td>(#ID名)</td><td>ページ内リンクにおけるリンク先のID名の指定</td></tr>
+<tr><td rowspan="2">target</td><td>(ウィンドウ名)</td><td>指定したウィンドウにリンク先を表示</td></tr>
+<tr><td>_blank</td><td>新しいウィンドウにリンク先を表示</td></tr>
+</table>
+
+<h1>範囲の指定、グループ化</h1>
+
+<h3>&lt;span&gt;</h3>
+
+このタグで囲った範囲をインライン要素としてグループ化します。特定の文字に対してCSSを指定する場合などに使用します。
+
+<h3>&lt;div&gt;</h3>
+
+このタグで囲った範囲をブロックレベル要素としてグループ化します。特定の範囲に対してCSSを指定する場合などに使用します。
+
+<h3>&lt;header&gt;</h3>
+
+ページ内でヘッダーとなる領域を指定します。
+
+<h3>&lt;footer&gt;</h3>
+
+ページ内でフッターとなる領域を指定します。
+
+<h3>&lt;aside&gt;</h3>
+
+メインコンテンツではない補足的な領域を指定します。
+
+<h3>&lt;nav&gt;</h3>
+
+ページ内でナビゲーションメニューとなる領域を指定します。
+
+<h1>表</h1>
+
+<h3>&lt;table&gt;</h3>
+
+表の範囲を指定します。
+
+<h3>&lt;tr&gt;</h3>
+
+表内の行を指定します。このタグを記述した数だけ表内に行が作成されます。
+
+<h3>&lt;td&gt;</h3>
+
+表内のセル（マス目）を指定します。このタグを記述した数だけ各行にセルが作成されます。
+
+<table>
+<tr><td>属性</td><td>値</td><td>指定内容</td></tr>
+<tr><td>colspan</td><td>（数値）</td><td>セルを右方向に連結する数の指定</td></tr>
+<tr><td>rowspan</td><td>（数値）</td><td>セルを下方向に連結する数の指定</td></tr>
+</table>
+
+<h3>&lt;th&gt;</h3>
+
+表内の見出しセルを指定します。このタグを記述した数だけ各行に見出しのセルが作成されます。
+
+<table>
+<tr><td>属性</td><td>値</td><td>指定内容</td></tr>
+<tr><td>colspan</td><td>（数値）</td><td>セルを右方向に連結する数の指定</td></tr>
+<tr><td>rowspan</td><td>（数値）</td><td>セルを下方向に連結する数の指定</td></tr>
+</table>
+
+<h3>&lt;caption&gt;</h3>
+
+表のキャプションとして表示する文字をしていします。このタグは&lt;table&gt;の直後に記述するのが基本です。
+
+<h3>&lt;thead&gt;</h3>
+
+見出しとなる行（表の上部）をグループ化します。このタグは&lt;table&gt;～&lt;/table&gt;の中に1回しか記述できません。
+
+<h3>&lt;tbody&gt;</h3>
+
+データ部分となる行をグループ化します。このタグは&lt;thead&gt;～&lt;/thead&gt;より後に記述しなければいけません。
+
+<h3>&lt;tfoot&gt;</h3>
+
+集計行となる行（表の一部）をグループ化します。このタグは&lt;thead&gt;～&lt;/thead&gt;より後に記述しなければいけません。また、このタグは&lt;table&gt;～&lt;/table&gt;の中に1回しか記述できません。
+
+<h3>&lt;colgroup&gt;</h3>
+
+表内の列をグループ化します。このタグは、&lt;caption&gt;～&lt;/caption&gt;より後、&lt;thead&gt;～&lt;/thead&gt;より前に記述しなければいけません。
+
+<table>
+<tr><td>属性</td><td>値</td><td>指定内容</td></tr>
+<tr><td>span</td><td>（数値）</td><td>グループ化する列数を左から順に指定</td></tr>
+</table>
+
+<h1>リスト</h1>
+
+<h3>&lt;ul&gt;</h3>
+
+リストを作成します。
+
+<h3>&lt;ol&gt;</h3>
+
+番号付きリストを作成します。
+
+<h3>&lt;li&gt;</h3>
+
+リスト内の各項目として表示する内容を記述します。
+
+<hr>
+
+<h1>CSSの簡易リファレンス</h1>
+
+ここからは、CSSに使えるタグを紹介していきます。
+
+<h1>文字のスタイル</h1>
+
+<h3>&lt;font-size&gt;</h3>
+文字サイズを「単位付きの数字」で指定します。
+
+<h3>&lt;font-family&gt;</h3>
+フォントの種類を以下の値で指定します。また、値を「"」や「'」で囲んで特定のフォントを指定することも可能です。この場合は、「フォント名」と「フォントの種類」を「,」(カンマ)で区切って併記するのが基本です。
+<table>
+<tr><td>値</td><td>指定内容</td></tr>
+<tr><td style="font-family: serif;">serif</td><td>明朝系のフォント</td></tr>
+<tr><td style="font-family: sans-serif;">sans-serif</td><td>ゴシック系のフォント</td></tr>
+<tr><td style="font-family: cursive;">cursive</td><td>筆記体、草書体系のフォント</td></tr>
+<tr><td style="font-family: fantasy;">fantasy</td><td>装飾フォント</td></tr>
+<tr><td style="font-family: monospace;">monospace</td><td>等幅フォント</td></tr>
+</table>
+
+<h3>&lt;color&gt;</h3>
+文字色を「<span class = "red">R</span><span class = "green">G</span><span class = "blue">B</span>の16進数表記」や「<span class = "pink">色の名前</span>」などで指定します。
+
+<h3>&lt;font-weight&gt;</h3>
+文字の太さを以下の値で指定します。
+<table>
+<tr><td>値</td><td>指定内容</td></tr>
+<tr><td>normal</td><td style="font-weight: normal;">標準の文字(400)</td></tr>
+<tr><td>bold</td><td style="font-weight: bold;">太字の文字(700)</td></tr>
+<tr><td>100～900</td><td>文字の太さを数値で指定</td></tr>
+</table>
+
+<h3>&lt;font-style&gt;</h3>
+文字のスタイル(斜体)を以下の値で指定します。
+<table>
+<tr><td>値</td><td>指定内容</td></tr>
+<tr><td>normal</td><td>標準の文字(初期値)</td></tr>
+<tr><td>italic</td><td style="font-style: italic;">斜体の文字(筆記体の斜体)</td></tr>
+<tr><td>oblique</td><td style="font-style: oblique;">各文字を斜めに傾けた斜体</td></tr>
+</table>
+
+<h3>&lt;text-decoration&gt;</h3>
+文字の装飾(下線/上線/取り消し線)を以下の値で指定します。
+
+<table>
+<tr><td>値</td><td>指定内容</td></tr>
+<tr><td>none</td><td>装飾なし(初期値)</td></tr>
+<tr><td>underline</td><td style="text-decoration: underline;">下線の描画</td></tr>
+<tr><td>overline</td><td style="text-decoration: overline;">上線の描画</td></tr>
+<tr><td>line-through</td><td style="text-decoration: line-through;">打ち消し線の描画</td></tr>
+<tr><td>blink</td><td class="blink">文字の点滅表示</td></tr>
+</table>
+なお、「text-decoration: blink;」はCSS1時代に定義されたものの、すでに廃止されているプロパティです。もし「点滅するテキスト」と作りたい場合は、<a href="blink.html">こちらを参照</a>してください。
+
+<h3>&lt;text-align&gt;</h3>
+文字の行ぞろえを以下の値で指定します。
+<table>
+<tr><td>値</td><td>指定内容</td></tr>
+<tr><td>left</td><td>左揃え</td></tr>
+<tr><td>center</td><td>中央揃え</td></tr>
+<tr><td>right</td><td>右揃え</td></tr>
+<tr><td>justify</td><td>両端揃え</td></tr>
+</table>
+
+<h3>&lt;line-height&gt;</h3>
+行間を標準の何倍にするかを「数値」で指定します。「単位付きの数値」で行間を指定することも可能です。
+
+<h1>背景のスタイル</h1>
+
+<h3>&lt;background-color&gt;</h3>
+要素の背景色を「RGBの16進数表記」や「色の名前」などで指定します。<br>
+以下、背景を淡い水色にしますね。
+
+<div class="AliceBlue">
+
+<h3>&lt;background-image&gt;</h3>
+要素の背景画像を「url("画像ファイル名")」という形式で指定します。<br>
+試しに、少しだけ背景を変えてみましょう。
+
+<div style="background-image: url('133768360819513780.jpg'); background-size: cover;">
+
+<h3>&lt;background-repeat&gt;</h3>
+背景画像の繰り返しを以下の値で指定します。
+<table>
+<tr><td>値</td><td>指定内容</td></tr>
+<tr><td>repeat</td><td>縦横に画像を繰り返して表示(初期値)</td></tr>
+<tr><td>repeat-x</td><td>横方向にのみ画像を繰り返して表示</td></tr>
+<tr><td>repeat-y</td><td>縦方向にのみ画像を繰り返して表示</td></tr>
+<tr><td>no-repeat</td><td>画像を繰り返さずに表示</td></tr>
+</table>
+
+</div>
+
+<br>
+すいません。見えづらくなっちゃったのでもう一度同じ内容を記述します。
+
+<h3>&lt;background-repeat&gt;</h3>
+背景画像の繰り返しを以下の値で指定します。
+<table>
+<tr><td>値</td><td>指定内容</td></tr>
+<tr><td>repeat</td><td>縦横に画像を繰り返して表示(初期値)</td></tr>
+<tr><td>repeat-x</td><td>横方向にのみ画像を繰り返して表示</td></tr>
+<tr><td>repeat-y</td><td>縦方向にのみ画像を繰り返して表示</td></tr>
+<tr><td>no-repeat</td><td>画像を繰り返さずに表示</td></tr>
+</table>
+
+<h3>&lt;background-position&gt;</h3>
+背景画像の表示位置を指定します。このプロパティの値には「横方向の位置」と「縦方向の位置」を半角スペースで区切って記述します。それぞれ以下の値を指定できます。そのほか、「単位付きの数値」で横方向と縦方向の位置を指定することも可能となっています。
+<table>
+<tr><td>値</td><td>横方向の位置</td><td>値</td><td>縦方向の位置</td></tr>
+<tr><td>left</td><td>左端</td><td>top</td><td>左端</td></tr>
+<tr><td>center</td><td>中央</td><td>center</td><td>中央</td></tr>
+<tr><td>right</td><td>右端</td><td>bottom</td><td>下端</td></tr>
+</table>
+
+<h3>&lt;background-size&gt;</h3>
+背景画像の表示サイズを指定します。このプロパティの値は「単位付きの数値」で指定し、「横幅」と「高さ」を半角スペースで区切って記述します。また、以下の値を指定することも可能です。
+<table>
+<tr><td>値</td><td>指定内容</td></tr>
+<tr><td>contain</td><td>画像全体がちょうど収まる倍率で表示</td></tr>
+<tr><td>cover</td><td>画像の横幅(または高さ)がちょうど収まる倍率で表示</td></tr>
+</table>
+
+<h3>&lt;background-attachment&gt;</h3>
+背景画像の固定化を以下の値で指定します。
+<table>
+<tr><td>値</td><td>指定内容</td></tr>
+<tr><td>scroll</td><td>画面のスクロールに合わせて背景画像を移動します(初期値)</td></tr>
+<tr><td>fixed</td><td>画面をスクロールしても背景画像を移動しません</td></tr>
+</table>
+
+<h1>サイズ/枠線/余白のスタイル</h1>
+
+<h3>&lt;width&gt;</h3>
+要素の横幅を「単位付きの数値」で指定します。なお、横幅の最小値または最大値を指定する場合は以下のプロパティを使用します。
+<br><br>
+min-width ·····横幅の最小値を「単位付きの数値」で指定します。
+<br>
+max-width ·····横幅の最大値を「単位付きの数値」で指定します。
+
+<h3>&lt;height&gt;</h3>
+要素の高さを「単位付きの数値」で指定します。なお、高さの最小値または最大値を指定する場合は以下のプロパティを使用します。
+<br><br>
+min-height ·····高さの最小値を「単位付きの数値」で指定します。
+<br>
+max-height ·····高さの最大値を「単位付きの数値」で指定します。
+
+<h3>&lt;border&gt;</h3>
+要素の周囲の枠線を「線種」「太さ」「色」で指定します。それぞれの値は半角スペースで区切って以下のように指定します。
+
+<ul>
+	<li>線種 ·····「特定のキーワード」で線の種類を指定(以下の表を参照)</li>
+	<li>太さ ·····「単位付きの数値」で線の太さを指定</li>
+	<li>色 ·······「RGBの16進数表記」や「色の名前」などで線の色を指定</li>
+</ul>
+
+<table style="float: left; border-collapse: collapse; margin-right: 20px;">
+<tr><td>値</td><td>線の種類</td></tr>
+<tr><td>none</td><td>線なし(初期値)</td></tr>
+<tr><td>hidden</td><td>非表示</td></tr>
+<tr><td>solid</td><td>実線</td></tr>
+<tr><td>double</td><td>二重線</td></tr>
+<tr><td>dashed</td><td>破線</td></tr>
+<tr><td>dotted</td><td>点線</td></tr>
+<tr><td>groove</td><td>立体的な線</td></tr>
+<tr><td>ridge</td><td>立体的な線</td></tr>
+<tr><td>inset</td><td>立体的な線</td></tr>
+<tr><td>outset</td><td>立体的な線</td></tr>
+</table>
+
+<table>
+<tr><td style="border: none;" class="pittari">線なし</td></tr>
+<tr><td style="border: hidden;" class="pittari">非表示</td></tr>
+<tr><td style="border: solid;" class="pittari">実線</td></tr>
+<tr><td style="border: double;" class="pittari">二重線</td></tr>
+<tr><td style="border: dashed;" class="pittari">破線</td></tr>
+<tr><td style="border: dotted;" class="pittari">点線</td></tr>
+<tr><td style="border: groove;" class="pittari">立体的な線</td></tr>
+<tr><td style="border: ridge;" class="pittari">立体的な線</td></tr>
+<tr><td style="border: inset;" class="pittari">立体的な線</td></tr>
+<tr><td style="border: outset;" class="pittari">立体的な線</td></tr>
+</table>
+
+<p style="float: clear;">
+なお、上下左右の枠線を個別に指定するときは以下のプロパティを使用します。
+</p>
+
+border-top ········上の枠線の書式を指定
+<br>
+border-right ······右の枠線の書式を指定
+<br>
+border-bottom ·····下の枠線の書式を指定
+<br>
+border-left ·······左の枠線の書式を指定
+
+<h3>&lt;padding&gt;</h3>
+要素の内部余白を「単位付きの数値」で指定します。このとき半角スペースで区切って複数の値を記述すると、上下左右の内部余白を以下のように指定できます。
+<table>
+<tr><td>値の数</td><td>指定される内部余白</td></tr>
+<tr><td>１つ</td><td>「上下左右」の内部余白を指定</td></tr>
+<tr><td>２つ</td><td>「上下」「左右」の内部余白を順番に指定</td></tr>
+<tr><td>３つ</td><td>「上」「左右」「下」の内部余白を順番に指定</td></tr>
+<tr><td>４つ</td><td>「上」「右」「下」「左」の内部余白を順番に指定</td></tr>
+</table>
+<br>
+そのほか、上下左右の内部余白を個別に指定するプロパティも用意されています。
+
+<br>
+padding-top ········上の内部余白を指定
+<br>
+padding-right ······右の内部余白を指定
+<br>
+padding-bottom ·····下の内部余白を指定
+<br>
+padding-left ·······左の内部余白を指定
+
+<h3>&lt;margin&gt;</h3>
+要素の外部余白を「単位付きの数値」または「auto」で指定します。「auto」を指定した場合は左右の外部余白が均等になるため、要素をセンタリングで配置できます。また、半角スペースで区切って複数の値を記述すると、上下左右の外部余白を以下のように指定できます。
+<table>
+<tr><td>値の数</td><td>指定される外部余白</td></tr>
+<tr><td>１つ</td><td>「上下左右」の外部余白を指定</td></tr>
+<tr><td>２つ</td><td>「上下」「左右」の外部余白を順番に指定</td></tr>
+<tr><td>３つ</td><td>「上」「左右」「下」の外部余白を順番に指定</td></tr>
+<tr><td>４つ</td><td>「上」「右」「下」「左」の外部余白を順番に指定</td></tr>
+</table>
+そのほか、上下左右の外部余白を個別に指定するプロパティも用意されています。
+
+<br>
+margin-top ········上の外部余白を指定
+<br>
+margin-right ······右の外部余白を指定
+<br>
+margin-bottom ·····下の外部余白を指定
+<br>
+margin-left ·······左の外部余白を指定
+
+<h3>&lt;box-sizing&gt;</h3>
+要素のサイズをwidthやheightのプロパティで指定する前に、枠線と内部余白をサイズに含めるかを以下の値で指定します。
+<table>
+<tr><td>値</td><td>指定内容</td></tr>
+<tr><td>content-box</td><td>枠線と内部余白をサイズに含めない(初期値)</td></tr>
+<tr><td>border-box</td><td>枠線と内部余白をサイズに含める</td></tr>
+</table>
+
+では、一度余白についてまとめてみましょう。
+
+<br><br>
+
+<div style="width: 400px; height: 120px; background-color: lightgreen; padding: 1px; text-align: center">
+	<p class="size-description">内容</p>
+</div>
+
+上の図において、<br>
+青い部分・・・内部余白<br>
+赤い部分・・・枠線<br>
+黄緑部分・・・外部余白<br>
+です。
+
+
+<h1>角丸/影/半透明のスタイル</h1>
+
+<h3>&lt;border-radius&gt;</h3>
+要素の四隅を角丸で表示します。このプロパティの値には、角丸の半径を「単位付きの数値」で指定します。このとき半角スペースで区切って複数の値を記述すると、四隅の角丸の半径を以下のように指定できます。
+<table>
+<tr><td>値の数</td><td>指定される角丸</td></tr>
+<tr><td>１つ</td><td>「四隅」の角丸を指定</td></tr>
+<tr><td>２つ</td><td>「左上と右下」「右上と左下」の角丸を順番に指定</td></tr>
+<tr><td>３つ</td><td>「左上」「右上と左下」「右下」の角丸を順番に指定</td></tr>
+<tr><td>４つ</td><td>「左上」「右上」「右上」「左下」の角丸を順番に指定</td></tr>
+</table>
+そのほか、四隅の角丸を個別に指定するプロパティも用意されています。
+
+<br>
+border-top-left-radius ·········左上の角丸を指定
+<br>
+border-top-right-radius ········右上の角丸を指定
+<br>
+border-bottom-right-radius ·····右下の角丸を指定
+<br>
+border-bottom-left-radius ······左下の角丸を指定
+
+<h3>&lt;box-shadow&gt;</h3>
+要素に影を付けます。このプロパティの値には、「４つの単位付き数値」と「影の色」を指定します。
+
+<ul>
+	<li>１番目の数値 ·····影を右方向へずらす距離(左方向へずらす場合は負の数を指定)</li>
+	<li>２番目の数値 ·····影を下方向へずらす距離(上方向へずらす場合は負の数を指定)</li>
+	<li>３番目の数値 ·····影をぼかすサイズ(省略可)</li>
+	<li>４番目の数値 ·····影を拡大するサイズ(省略可)</li>
+	<li>影の色 ···········「RGBの16進数表記」や「色の名前」などで指定</li>
+</ul>
+なお、要素の内側に影を表示させる場合は、最後に「inset」という値を追加します。
+
+<h3>&lt;opacity&gt;</h3>
+要素を半透明で表示します。このプロパティの値には「0～1の数値」を指定します。0を指定すると「完全に透明」、1を指定すると「透明度なし」の状態で要素が表示されます。半透明で表示させるときは、0.5のように小数点以下を含む数値を指定する必要があります。
+
+<br>
+
+<p>
+&lt;例&gt;<br>
+</p>
+
+<img src="133768360819513780.jpg" alt="" class="radius-description">
+
+<img src="133768360819513780.jpg" alt="" class="shadow-description">
+
+<img src="133768360819513780.jpg" alt="" class="opacity-description">
+
+
+
+
+
+
+<h1>回り込みのスタイル</h1>
+
+<h3>&lt;float&gt;</h3>
+以降の要素を回り込みで配置するかを以下の値で指定します。
+
+<table>
+<tr><td>値</td><td>指定内容</td></tr>
+<tr><td>left</td><td>左に配置(以降の要素を右側に回り込ませる)</td></tr>
+<tr><td>right</td><td>右に配置(以降の要素を左側に回り込ませる)</td></tr>
+<tr><td>none</td><td>回り込みなし(初期値)</td></tr>
+</table>
+
+<h3>&lt;clear&gt;</h3>
+回り込みの解除を以下の値で指定します。
+<table>
+<tr><td>値</td><td>指定内容</td></tr>
+<tr><td>left</td><td>float:leftの回り込みを解除</td></tr>
+<tr><td>right</td><td>float:rightの回り込みを解除</td></tr>
+<tr><td>both</td><td>左右の回り込みを両方とも解除</td></tr>
+<tr><td>none</td><td>回り込みの解除なし(初期値)</td></tr>
+</table>
+
+
+<h1>表のスタイル</h1>
+
+<h3>&lt;border-collapse&gt;</h3>
+セルとセルの間隔を以下の値で指定します。
+
+<table>
+<tr><td>値</td><td>指定内容</td></tr>
+<tr><td>separate</td><td>セルとセルの間に間隔を設ける(初期値)</td></tr>
+<tr><td>collapse</td><td>セルとセルの間に間隔を設けない</td></tr>
+</table>
+
+<h3>&lt;border-spacing&gt;</h3>
+セルとセルの間隔を「単位付きの数値」で指定します。ただし、このプロパティが有効となるのは「border-collapse:separate」が指定されている場合に限られます。半角スペースで区切って複数の値を記述すると、セルとセルの間隔を以下のように指定できます。
+
+<table>
+<tr><td>値の数</td><td>指定される間隔</td></tr>
+<tr><td>１つ</td><td>「上下左右」の間隔を指定</td></tr>
+<tr><td>２つ</td><td>「左右」「上下」の間隔を順番に指定</td></tr>
+</table>
+
+<h3>&lt;caption-side&gt;</h3>
+キャプションの表示位置を以下の値で指定します。
+
+<table>
+<tr><td>値</td><td>指定内容</td></tr>
+<tr><td>top</td><td>表の上にキャプションを表示(初期値)</td></tr>
+<tr><td>bottom</td><td>表の下にキャプションを表示</td></tr>
+</table>
+
+<h3>&lt;vertical-align&gt;</h3>
+セル内における上下方向の配置を以下の値で指定します。
+
+<table>
+<tr><td>値</td><td>指定内容</td></tr>
+<tr><td>top</td><td>上揃えで配置</td></tr>
+<tr><td>middle</td><td>上下中央揃えで配置(初期値)</td></tr>
+<tr><td>bottom</td><td>下揃えで配置</td></tr>
+</table>
+
+<h1>リストのスタイル</h1>
+
+<h3>&lt;list-style-type&gt;</h3>
+各項目の先頭に表示されるマーカーの種類や番号の種類を以下の値で指定します。
+
+<table>
+<tr><td>値</td><td>マーカーの表示</td></tr>
+<tr><td>none</td><td>マーカーなし</td></tr>
+<tr><td>disc</td><td>黒丸(ulの初期値)</td></tr>
+<tr><td>circle</td><td>白丸</td></tr>
+<tr><td>square</td><td>四角</td></tr>
+<tr><td>decimal</td><td>1、2、3、4、...(olの初期値)</td></tr>
+<tr><td>desimal-leading-sero</td><td>01、02、03、04、...</td></tr>
+<tr><td>lower-roman</td><td>ⅰ、ⅱ、ⅲ、ⅳ、...</td></tr>
+<tr><td>upper-roman</td><td>Ⅰ、Ⅱ、Ⅲ、Ⅳ、...</td></tr>
+<tr><td>lower-alpha</td><td>a、b、c、d、...</td></tr>
+<tr><td>upper-alpha</td><td>A、B、C、D、...</td></tr>
+<tr><td>lower-greek</td><td>α、β、γ、δ、...</td></tr>
+</table>
+
+<h3>&lt;list-style-image&gt;</h3>
+マーカーとして表示する画像を「url("画像ファイル名")」という形式で指定します。
+
+<h1>ブロックレベル要素/インライン要素の変換</h1>
+
+<h3>&lt;display&gt;</h3>
+要素の表示形式を以下の値で指定します。
+
+<table>
+<tr><td>値</td><td>指定内容</td></tr>
+<tr><td>block</td><td>ブロックレベル要素として表示</td></tr>
+<tr><td>inline</td><td>インライン要素として表示</td></tr>
+</table>
+
+<h1>セレクタ(指定条件)について</h1>
+CSSファイルや&lt;head&gt;～</head>でCSSを指定するときは、条件{·····}という形式でCSSを記述します。この条件のことを<b>セレクタ</b>といいます。以下に、一般的によく使われるセレクタの指定方法を紹介しておきます。<br>
+
+<h4 class="unti">*{·····}</h4>
+全てのタグにCSSを適用します。<br><br>
+
+<h4 class="unti">タグ名{·····}</h4>
+指定したタグ名にCSSを適用します。<br><br>
+
+<h4 class="unti">.クラス名{·····}</h4>
+指定したクラス名を持つタグだけにCSSを適用します。<br><br>
+
+<h4 class="unti">#ID名{·····}</h4>
+指定したID名を持つタグだけにCSSを適用します。<br><br>
+
+<h4 class="unti">タグ名.クラス名{·····}</h4>
+指定したタグ名のうち、指定したクラス名を持つタグだけにCSSを適用します。<br><br>
+
+<h4 class="unti">条件A、条件B、条件C{·····}</h4>
+条件A、条件B、条件Cのいずれかに合致するすべてのタグに同じCSSを適用します。<br><br>
+
+<h4 class="unti">条件A 条件B{·····}</h4>
+条件Aに合致するタグの内部にある、条件BのタグだけにCSSを適用します。<br><br>
+
+<h4 class="unti">a:link{·····}</h4>
+未訪問のリンクにCSSを適用します。<br><br>
+
+<h4 class="unti">a:visited{·····}</h4>
+訪問済みのリンクにCSSを適用します。<br><br>
+
+<h4 class="unti">条件:hover{·····}</h4>
+条件に合致するタグにマウスを重ねたとき(マウスオーバー)にCSSを適用します。<br><br>
+
+<h4 class="unti">条件:active{·····}</h4>
+条件に合致するタグをマウスでクリックしたときにCSSを適用します。<br><br>
+
+
+<br>
+
+<h2 class="atogaki" id="atogaki_2">詳細情報及び宣伝</h2>
+
+最終更新日時：2025/10/03<br>
+作成者：今はまだ内緒<br>
+<br>
+<a href="https://store.line.me/stickershop/product/28295186/ja?ref=Desktop" target="_blank">
+あじゃぶ公式LINEスタンプ高評発売中！
+</a>
+</p>
+
+
+<div>	<!-- 背景色をAliceblueに -->
+
+</body>
+
+</html> 
